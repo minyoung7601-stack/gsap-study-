@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03실습</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <section class="con01"></section>
+    <section class="con02">
+      <div class="title">
+        <p class="my">My</p>
+        <p class="work">work</p>
+      </div>
+      <ul class="worklist">
+        <li>
+          <a href="#">
+            <div class="imgBox">
+              <img src="img/img1.jpg" alt="이미지1" />
+            </div>
+            <div class="textBox">
+              <h3>Site name</h3>
+              <div class="info">
+                <p>UI/UX Design</p>
+                <p>2026</p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="imgBox">
+              <img src="img/img2.jpg" alt="이미지2" />
+            </div>
+            <div class="textBox">
+              <h3>Site name</h3>
+              <div class="info">
+                <p>UI/UX Design</p>
+                <p>2026</p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="imgBox">
+              <img src="img/img3.jpg" alt="이미지3" />
+            </div>
+            <div class="textBox">
+              <h3>Site name</h3>
+              <div class="info">
+                <p>UI/UX Design</p>
+                <p>2026</p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="imgBox">
+              <img src="img/img4.jpg" alt="이미지4" />
+            </div>
+            <div class="textBox">
+              <h3>Site name</h3>
+              <div class="info">
+                <p>UI/UX Design</p>
+                <p>2026</p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="imgBox">
+              <img src="img/img5.jpg" alt="이미지5" />
+            </div>
+            <div class="textBox">
+              <h3>Site name</h3>
+              <div class="info">
+                <p>UI/UX Design</p>
+                <p>2026</p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="imgBox">
+              <img src="img/img6.jpg" alt="이미지6" />
+            </div>
+            <div class="textBox">
+              <h3>Site name</h3>
+              <div class="info">
+                <p>UI/UX Design</p>
+                <p>2026</p>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section class="con03"></section>
+    <section class="con04"></section>
+    <script>
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".con02", // 1. 대상 설정
+            start: "0% 100%", // 2. 시작 지점
+            end: "50% 50%",
+            scrub: 2, // 3. 부드러운 동기화
+            // markers: true, // 4. 가이드라인 표시
+          },
+        })
+        .fromTo(
+          ".con02 .my",
+          { x: "-100%", opacity: 0 },
+          { x: "0%", opacity: 1 },
+        )
+        .fromTo(
+          ".con02 .work",
+          { x: "100%", opacity: 0 },
+          { x: "0%", opacity: 1 },
+          0,
+        );
+
+      //body 배경색 검정색, title 글자색 : 흰색, 고정
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".worklist",
+            start: "10% 100%",
+            end: "10% 100%",
+            scrub: 2,
+            // markers: true,
+          },
+        })
+        .to("body", {
+          backgroundColor: "#000",
+          color: "#fff",
+        })
+        .to(".con02 .title", {
+          position: "fixed",
+          left: 0,
+          top: 0,
+        });
+
+      //My Work 사라지게
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".con02", // 1. 대상 설정
+            start: "80% 20%", // 2. 시작 지점
+            end: "100% 20%",
+            scrub: 2, // 3. 부드러운 동기화
+            markers: true, // 4. 가이드라인 표시
+          },
+        })
+        .to(
+          ".con02 .my",
+
+          { x: "-100%", opacity: 0 },
+        )
+        .to(
+          ".con02 .work",
+
+          { x: "100%", opacity: 0 },
+          0,
+        );
+    </script>
+  </body>
+</html>
