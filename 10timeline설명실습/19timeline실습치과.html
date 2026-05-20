@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      ul {
+        list-style: none;
+      }
+      body {
+        height: 3000px;
+        background-color: #ddd;
+      }
+      section {
+        text-align: center;
+        margin: 1000px auto;
+      }
+      h2 {
+        font-size: 3rem;
+        margin-bottom: 50px;
+      }
+      ul {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+      }
+      li {
+        width: 200px;
+        padding: 2rem 0px;
+        line-height: 1.7rem;
+        border-radius: 10px;
+      }
+      .bg1 {
+        background-color: lightblue;
+      }
+      .bg2 {
+        background-color: tomato;
+      }
+      .bg3 {
+        background-color: yellowgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>당신의 치아를 사랑하는 가장 감각적인 공간, LU치과</h2>
+      <ul>
+        <li class="bg1">늘 환자를 <br />먼저 생각하는 <br />LU치과</li>
+        <li class="bg2">구강건강과<br />아름다움까지<br />LU치과</li>
+        <li class="bg3">
+          소중한 건강을 <br />최우선으로 생각하는 <br />LU치과
+        </li>
+      </ul>
+    </section>
+    <script>
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: "ul",
+            start: "top 30%",
+            end: "bottom 30%",
+            scrub: 2,
+            markers: true,
+          },
+        })
+        .to(".bg1", { rotation: 360, duration: 1 })
+        .to(".bg2", { scale: 1.5, duration: 1 })
+        .to(".bg3", { x: 300, duration: 1 });
+    </script>
+  </body>
+</html>
+
+<!-- 
+gsap.timeline()은 여러 애니메이션을 순서대로 또는 동시에 움직임을 제어할 수 있는 기능
+애니메이션을 시간 순서 또는 지연을 설정해서 순차적으로 음직임을 구현할 수 있음
+
+순서대로 실행(box1이 실행되고 끝나면 box2가 실행됨)
+변수 t1에 넣어야함
+let t1 = gsap.timeline()
+t1.to(".box1",{실행문}) - 콤마 찍지 않는다
+    .to(".box2",{실행문})
+
+0초에 동시 실행(box1하고 box2가 동시에 실행됨)
+let t1 = gsap.timeline()
+t1.to(".box1",{실행문}, 0) 
+    .to(".box2",{실행문}, 0)
+
+가속도의 기능을 함축나와서 여러개 적용할 경우 편리.
+시간차를 두고 실행(box1은 0초에 실행되고 box2는 0.5초에 실행이됨)
+let t1 = gsap.timeline()
+t1.to(".box1",{실행문}, 0) 
+    .to(".box2",{실행문}, 0.5)
+-->

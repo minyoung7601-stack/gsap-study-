@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>timeline실습</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+  </head>
+  <style>
+    body {
+      height: 3000px;
+    }
+    div {
+      width: 100px;
+      height: 100px;
+      margin: 200px;
+    }
+    .box1 {
+      background-color: green;
+    }
+    .box2 {
+      background-color: yellowgreen;
+    }
+    .box3 {
+      background-color: blue;
+    }
+  </style>
+
+  <body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <script>
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".box2",
+            start: "top 50%",
+            scrub: 2,
+            markers: true,
+          },
+        })
+        .to(".box1", { rotation: 360, duration: 1 })
+        .to(".box2", { scale: 2, duration: 1 })
+        .to(".box3", { x: 300, duration: 1 });
+    </script>
+  </body>
+</html>
+<!-- 
+gsap.timeline()은 여러 애니메이션을 순서대로 또는 동시에 움직임을 제어할 수 있는 기능
+애니메이션을 시간 순서 또는 지연을 설정해서 순차적으로 음직임을 구현할 수 있음
+
+순서대로 실행(box1이 실행되고 끝나면 box2가 실행됨)
+변수 t1에 넣어야함
+let t1 = gsap.timeline()
+t1.to(".box1",{실행문}) - 콤마 찍지 않는다
+    .to(".box2",{실행문})
+
+0초에 동시 실행(box1하고 box2가 동시에 실행됨)
+let t1 = gsap.timeline()
+t1.to(".box1",{실행문}, 0) 
+    .to(".box2",{실행문}, 0)
+
+가속도의 기능을 함축나와서 여러개 적용할 경우 편리.
+시간차를 두고 실행(box1은 0초에 실행되고 box2는 0.5초에 실행이됨)
+let t1 = gsap.timeline()
+t1.to(".box1",{실행문}, 0) 
+    .to(".box2",{실행문}, 0.5)
+-->
