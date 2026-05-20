@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>from출발점설정</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px; /* 높이 추가 */
+        background-color: orange;
+        margin-left: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      gsap.from(".box", {
+        opacity: 1,
+        x: -400,
+        backgroundColor: "blue",
+        scale: 0.5,
+        duration: 5,
+        ease: "elastic.out",
+      });
+    </script>
+  </body>
+</html>

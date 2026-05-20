@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>fromTo</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px; /* 높이 추가 */
+        background-color: orange;
+        margin-left: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      gsap.fromTo(
+        ".box",
+        { x: 100, opacity: 0, scale: 0 },
+        { x: 100, opacity: 1, scale: 2, duration: 5 },
+      );
+    </script>
+  </body>
+</html>

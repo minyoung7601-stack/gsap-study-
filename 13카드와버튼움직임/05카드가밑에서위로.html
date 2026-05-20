@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+        width: 600px;
+        display: flex;
+        gap: 1rem;
+        margin: 100px auto;
+      }
+      li {
+        width: calc(100% / 4);
+        background-color: #ccc;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>list1</li>
+      <li>list2</li>
+      <li>list3</li>
+      <li>list4</li>
+    </ul>
+    <script>
+      gsap.from("li", {
+        y: 100, // 아래 100px 지점에서 시작
+        opacity: 0, // 투명하게 시작
+        duration: 3,
+        ease: "elastic.out",
+        stagger: 0.4, // ★ 0.4초 간격으로 하나씩 등장!
+      });
+    </script>
+  </body>
+</html>
+<!-- 
+시작은 아래쪽에서 살짝 1,2,3,4가 올라오게
+도착지점은 지금 현재.
+
+CSS로 완성된 모습을 그려놓습니다. from은 **"지금 CSS 상태를 도착점이라고 생각하고, 내가 지정한 과거 상태에서 여기까지 되돌아와라"**라고 명령하는 것입니다. 그래서 코드가 끝나면 결국 HTML/CSS로 디자인한 원래 위치에 딱 멈추게 됩니다.
+
+stagger
+-->

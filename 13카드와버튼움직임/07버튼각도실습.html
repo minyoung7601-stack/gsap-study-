@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      body {
+        height: 100vh;
+        background-image: linear-gradient(135deg, lightpink, lightblue);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .btn {
+        padding: 15px 30px;
+        background-color: orange;
+        font-size: 1.2rem;
+        border-radius: 0.8rem;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">구매하기</button>
+    <script>
+      let btn = document.querySelector(".btn");
+      console.log(btn);
+
+      btn.addEventListener("mouseenter", function () {
+        gsap.to(btn, {
+          scale: 1.2,
+          rotation: 5,
+          duration: 0.3,
+        });
+      });
+
+      btn.addEventListener("mouseleave", function () {
+        gsap.to(btn, {
+          scale: 1,
+          rotation: 0,
+          duration: 0.3,
+        });
+      });
+    </script>
+  </body>
+</html>
+<!-- 
+  gsap.to()는 현재 상태에서 설정한 값으로 애니메이션이 실행(도착점 설정)
+  gsap.from()은 설정한 시작값에서 현재 스타일로 자연스럽게 이동(출발점 설정)
+  gsap.fromto()은 시작값(출발점)에서 끝값(도착점)까지 지정해서 애니메이션 실행(출발점, 도착점 설정해야함)
+
+  <ease종류>
+    - elastic : 튕기는 효과
+    - bounce : 튕기는 효과
+    - slow : 천천히 시작
+
+    - out : 빠르게 시작하고 천천히 끝남
+    - in : 천천히 시작하고 빠르게 끝남
+    - inOut : 천천히 시작하고 천천히 끝남
+    - stagger : 간격. 시차를 두고 순서대로 시작
+
+    elastic.out
+    elastic.in
+    elastic.inOut
+
+    위치관련 : x, y
+    속성 : opacity, scale, scaleX, scaleY
+    rotaion, skewX, skewY, backgroundColor, color, borderRadius, width, height
+
+    duration : 진행시간
+    delay : 지연시간
+
+CSS로 완성된 모습을 그려놓습니다. from은 **"지금 CSS 상태를 도착점이라고 생각하고, 내가 지정한 과거 상태에서 여기까지 되돌아와라"**라고 명령하는 것입니다. 그래서 코드가 끝나면 결국 HTML/CSS로 디자인한 원래 위치에 딱 멈추게 됩니다.
+
+
+
+-->
