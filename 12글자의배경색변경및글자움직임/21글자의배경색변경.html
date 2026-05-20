@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>글자의 배경색 변경</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul {
+        list-style: none;
+      }
+      section {
+        height: 100vh;
+        background-color: #000;
+      }
+      .con02 {
+        background-color: orange;
+        font-size: 5vw;
+        line-height: 1;
+        padding: 50px 0;
+      }
+      .con02 .mask {
+        width: 80%;
+        margin: 0 auto;
+      }
+      .con02 .text {
+        -webkit-text-fill-color: rgba(255, 255, 255, 0.5);
+        background-image: linear-gradient(90deg, #ff0080, #00bfff);
+        background-size: 0% 100%;
+        -webkit-background-clip: text;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="con01"></section>
+    <section class="con02">
+      <div class="mask">
+        <span class="text"
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe odit
+          quia laboriosam dolorum tenetur quaerat! Sit, a molestiae magnam
+          repellendus sint debitis. Non ratione sapiente reiciendis sit placeat
+          laborum vel!</span
+        >
+      </div>
+    </section>
+    <section class="con03"></section>
+    <script>
+      gsap.to(".con02 .text", {
+        "background-size": "100% 100%",
+        scrollTrigger: {
+          trigger: ".con02",
+          start: "0%, 50%",
+          end: "50% 50%",
+          scrub: 2,
+          markers: true,
+        },
+      });
+    </script>
+  </body>
+</html>
