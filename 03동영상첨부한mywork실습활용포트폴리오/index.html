@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03실습</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting.css"
+    />
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <section class="con01">
+      <video src="img/video.mp4" autoplay loop muted></video>
+      <h2 data-splitting>Hi!<br />Have a nice day!</h2>
+    </section>
+    <section class="con02">
+      <div class="title">
+        <p class="my">My</p>
+        <p class="work">work</p>
+      </div>
+      <ul class="worklist">
+        <li>
+          <a href="#">
+            <div class="imgBox">
+              <img src="img/img1.jpg" alt="이미지1" />
+            </div>
+            <div class="textBox">
+              <h3>Site name</h3>
+              <div class="info">
+                <p>UI/UX Design</p>
+                <p>2026</p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="imgBox">
+              <img src="img/img2.jpg" alt="이미지2" />
+            </div>
+            <div class="textBox">
+              <h3>Site name</h3>
+              <div class="info">
+                <p>UI/UX Design</p>
+                <p>2026</p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="imgBox">
+              <img src="img/img3.jpg" alt="이미지3" />
+            </div>
+            <div class="textBox">
+              <h3>Site name</h3>
+              <div class="info">
+                <p>UI/UX Design</p>
+                <p>2026</p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="imgBox">
+              <img src="img/img4.jpg" alt="이미지4" />
+            </div>
+            <div class="textBox">
+              <h3>Site name</h3>
+              <div class="info">
+                <p>UI/UX Design</p>
+                <p>2026</p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="imgBox">
+              <img src="img/img5.jpg" alt="이미지5" />
+            </div>
+            <div class="textBox">
+              <h3>Site name</h3>
+              <div class="info">
+                <p>UI/UX Design</p>
+                <p>2026</p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="imgBox">
+              <img src="img/img6.jpg" alt="이미지6" />
+            </div>
+            <div class="textBox">
+              <h3>Site name</h3>
+              <div class="info">
+                <p>UI/UX Design</p>
+                <p>2026</p>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section class="con03">
+      <h2>Our Friend</h2>
+      <ul>
+        <li class="card01"><img src="img/con03img01.jpg" alt="" /></li>
+        <li class="card02"><img src="img/con03img02.jpg" alt="" /></li>
+        <li class="card03"><img src="img/con03img03.jpg" alt="" /></li>
+        <li class="card04"><img src="img/con03img04.jpg" alt="" /></li>
+        <li class="card05"><img src="img/con03img05.jpg" alt="" /></li>
+      </ul>
+    </section>
+    <section class="con04">
+      <h2>Under the Sea</h2>
+      <ul>
+        <li><img src="img/con04img01.jpg" alt="" /></li>
+        <li><img src="img/con04img02.jpg" alt="" /></li>
+        <li><img src="img/con04img03.jpg" alt="" /></li>
+        <li><img src="img/con04img04.jpg" alt="" /></li>
+      </ul>
+    </section>
+    <script>
+      // 라이브러리 활성화
+      Splitting();
+      //section01
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".con01",
+            start: "0%, 0%", // "top top"에서 시작해서 스크롤을 1000px 내릴 동안 애니메이션 진행
+            end: "100% 90%",
+            scrub: 3,
+            pin: true, // 애니메이션이 일어나는 동안 화면을 고정시키면 훨씬 예쁩니다!
+            // markers: true,
+          },
+        })
+        .fromTo(
+          ".con01 video",
+          { "clip-path": "inset(60% 60% 60% 60% round 30%)" },
+          {
+            "clip-path": "inset(0% 0% 0% 0% round 0%)",
+          },
+        );
+      //section02
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".con02", // 1. 대상 설정
+            start: "0% 100%", // 2. 시작 지점
+            end: "50% 50%",
+            scrub: 2, // 3. 부드러운 동기화
+            // markers: true, // 4. 가이드라인 표시
+          },
+        })
+        .fromTo(
+          ".con02 .my",
+          { x: "-100%", opacity: 0 },
+          { x: "0%", opacity: 1 },
+        )
+        .fromTo(
+          ".con02 .work",
+          { x: "100%", opacity: 0 },
+          { x: "0%", opacity: 1 },
+          0,
+        );
+
+      //body 배경색 검정색, title 글자색 : 흰색, 고정
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".worklist",
+            start: "10% 100%",
+            end: "10% 100%",
+            scrub: 2,
+            // markers: true,
+          },
+        })
+        .to("body", {
+          backgroundColor: "#000",
+          color: "#fff",
+        })
+        .to(".con02 .title", {
+          position: "fixed",
+          left: 0,
+          top: 0,
+        });
+
+      //My Work 사라지게
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".con02", // 1. 대상 설정
+            start: "80% 20%", // 2. 시작 지점
+            end: "100% 20%",
+            scrub: 2, // 3. 부드러운 동기화
+            // markers: true, // 4. 가이드라인 표시
+          },
+        })
+        .to(
+          ".con02 .my",
+
+          { x: "-100%", opacity: 0 },
+        )
+        .to(
+          ".con02 .work",
+
+          { x: "100%", opacity: 0 },
+          0,
+        );
+
+      //section03
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".con03",
+            start: "30% 50%", //앞의 값 : 애니메이션을 걸 대상(.con03)의 맨 위에서 내려온 지점. 뒤의 값 : 브라우저 화면의 맨 위(0%)에서 내려온 지점.
+            end: "70% 50%", //바닥이 화면 꼭대기로 사라질 때 (섹션 끝까지 지속)
+            scrub: 3, //scrub은 스크롤의 길이에 따라 움직임이 조절됨
+            pin: true,
+            // markers: true,
+          },
+        })
+        //y값을 from에, to에는 opacity:1
+        .fromTo(
+          ".con03 .card01",
+          { y: 400, opacity: 0.2 }, // 여기! 시작할 때의 투명도를 0으로 설정
+          { y: 0, opacity: 1, duration: 1 }, // 끝날 때의 투명도를 1로 설정
+        )
+        // card02 시작 (마지막에 숫자 0.2는 앞선 애니메이션 시작 후 0.2초 뒤에 실행하라는 뜻)
+        .fromTo(
+          ".con03 .card02",
+          { y: 400, opacity: 0.2 },
+          { y: 0, opacity: 1 },
+        )
+
+        // card03 시작
+        .fromTo(".con03 .card03", { y: 400, opacity: 0 }, { y: 0, opacity: 1 })
+
+        // card04 시작
+        .fromTo(".con03 .card04", { y: 400, opacity: 0 }, { y: 0, opacity: 1 })
+
+        // card05 시작
+        .fromTo(".con03 .card05", { y: 400, opacity: 0 }, { y: 0, opacity: 1 });
+
+      //section04
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".con04 ul", // 이 요소가 화면에 보일 때 애니메이션 준비!
+            start: "top 90%",
+            end: "20% 30%",
+            scrub: 2,
+            // markers: true,
+          },
+        })
+
+        .to(".con04 li:nth-child(1)", { y: 0, duration: 1 }, 0.2)
+        .to(".con04 li:nth-child(2)", { y: 0, duration: 1 }, 0.4)
+        .to(".con04 li:nth-child(3)", { y: 0, duration: 1 }, 0.6)
+        .to(".con04 li:nth-child(4)", { y: 0, duration: 1 }, 0.8);
+    </script>
+  </body>
+</html>
